@@ -45,8 +45,8 @@ public class LibLab9 implements Runnable{
     public LibLab9(){
         
     }
-    
-    
+    // generar guarda el binario ejecutar ejecuta el query
+    // este encripta
     public static String encrypt(String password){
         try{
             MessageDigest m = MessageDigest.getInstance("MD5");  
@@ -62,7 +62,7 @@ public class LibLab9 implements Runnable{
         }
         return "";
     }
-    
+    // metodo para agregar recientes
     public void changeRecent(JMenuItem menu, JLabel label){
         menu.removeAll();
         for (int i = 0; i < recientesPos; i++) {
@@ -108,7 +108,7 @@ public class LibLab9 implements Runnable{
         }catch(Exception ex){
         }
     }
-    
+    // agrega al menu de recientes un elemento siempre y cuando sea menor a 5
     public void addRecent(String path){
         recientes[recientesPos] = path;
         recientesPos %= 5;
@@ -159,7 +159,7 @@ public class LibLab9 implements Runnable{
     public void setProgressBar(JProgressBar progressBar){
         barra = progressBar;
     }
-    
+    // colorea la barra
     Thread hilo = new Thread(this);
     @Override
     public void run() {
