@@ -4,24 +4,24 @@
  * and open the template in the editor.
  */
 package lab9p2_alberthgodoy_diegochavez;
-
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JDialog;
-
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 /**
  *
  * @author godoy
  */
 public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
-    
+
     private ArrayList<usuario> listaUsuarios = new ArrayList();
     private ArrayList<juegos> listaJuegos = new ArrayList();
     private ArrayList<idiomas> listaIdiomas = new ArrayList();
-    
+
     /**
      * Creates new form Lab9P2_AlberthGodoy_DiegoChavez
      */
-   
     public Lab9P2_AlberthGodoy_DiegoChavez() {
         initComponents();
     }
@@ -388,31 +388,56 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_PasswordRegistroActionPerformed
 
     private void jTextField_CorreRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_CorreRegistroActionPerformed
-        System.out.println("DiegoPrueba");
+
     }//GEN-LAST:event_jTextField_CorreRegistroActionPerformed
 
     private void jButton_RegistroButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_RegistroButtonMouseClicked
-       entrar(jDialog_Registro);
-       
+        entrar(jDialog_Registro);
     }//GEN-LAST:event_jButton_RegistroButtonMouseClicked
 
     private void jButton_IngresarLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_IngresarLoginMouseClicked
         //Ingresar Usuario
-     
+        //Cargar base de Datos
+        dba db = new dba("./Lab9P2_AlberthGodoy_DiegoChavez.mdb");
+        listaUsuarios = new ArrayList();
+        db.conectar();
+        try {
+            db.query.execute("select id,username,nombre,contra,edad,correo from Usuario");
+            ResultSet rs = db.query.getResultSet();
+            while (rs.next()) {
+                //Agregar usuarios segun la base de datos
+                listaUsuarios.add(new usuario(rs.getInt(1), rs.getString(2), rs.getString(3), 
+                        rs.getString(4), rs.getInt(5), rs.getString(6)));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        db.desconectar();
+        //Identificiar los Usuarios
+        for (usuario userSelect : listaUsuarios) {
+            if (jTextField_UsuarioLogin.getText().equals(userSelect.getUsername()) && 
+                    jTextField_PasswordLogin.getText().equals(userSelect.getContra())) {
+                jDialog_Inicio.pack();
+                jDialog_Inicio.setModal(true);
+                jDialog_Inicio.setLocationRelativeTo(jButton_IngresarLogin);
+                JOptionPane.showMessageDialog(jButton_IngresarLogin, String.format("Bienvenido %s", userSelect.getNombre()), 
+                        "LOGIN", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_jButton_IngresarLoginMouseClicked
-                                                 
 
-    private void jButton_RegistrarMouseClicked(java.awt.event.MouseEvent evt) {                                               
+    private void jButton_RegistrarMouseClicked(java.awt.event.MouseEvent evt) {
         dba x1 = new dba("./Lab9P2_AlberthGodoy_DiegoChavez.mbd");
         x1.conectar();
 
         try {
-           // x1.query.execute(" insert into Usuario (id, username, nombre, contra , edad, correo) values( '" +jTextField_UsuarioRegistro.getText()+ "' , "      ) ");
-            
+            // x1.query.execute(" insert into Usuario (id, username, nombre, contra , edad, correo) values( '" +jTextField_UsuarioRegistro.getText()+ "' , "      ) ");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }                                              
+    }
+
     private void entrar(JDialog cosa) {
         cosa.setModal(true);
         cosa.pack();
@@ -423,6 +448,7 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
     private void cerrar(JDialog cosa) {
         cosa.dispose();
     }
+
     /**
      * @param args the command line arguments
      */

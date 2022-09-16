@@ -3,14 +3,14 @@ package lab9p2_alberthgodoy_diegochavez;
 public class usuario {
 
     //ID, usuario, nombre, contraseña, edad y correo.
-    private String ID;
+    private int ID;
     private String username;
     private String nombre;
     private String contra;
     private int edad;
     private String correo;
 
-    public usuario(String ID, String username, String nombre, String contra, int edad, String correo) {
+    public usuario(int ID, String username, String nombre, String contra, int edad, String correo) {
         this.ID = ID;
         this.username = username;
         this.nombre = nombre;
@@ -22,7 +22,7 @@ public class usuario {
     public usuario() {
     }
 
-    public void setID(String ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 
@@ -46,7 +46,7 @@ public class usuario {
         this.correo = correo;
     }
 
-    public String getID() {
+    public int getID() {
         return ID;
     }
 
