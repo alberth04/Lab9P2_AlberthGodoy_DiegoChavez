@@ -6,6 +6,7 @@
 package lab9p2_alberthgodoy_diegochavez;
 
 import java.util.ArrayList;
+import javax.swing.JDialog;
 
 /**
  *
@@ -387,20 +388,41 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_PasswordRegistroActionPerformed
 
     private void jTextField_CorreRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_CorreRegistroActionPerformed
-        // TODO add your handling code here:
+        System.out.println("DiegoPrueba");
     }//GEN-LAST:event_jTextField_CorreRegistroActionPerformed
 
     private void jButton_RegistroButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_RegistroButtonMouseClicked
-        //abrir el dialog de registro
-        System.out.println("holadiego");
+       entrar(jDialog_Registro);
+       
     }//GEN-LAST:event_jButton_RegistroButtonMouseClicked
 
     private void jButton_IngresarLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_IngresarLoginMouseClicked
         //Ingresar Usuario
-        System.out.println("hola");
-        
+     
     }//GEN-LAST:event_jButton_IngresarLoginMouseClicked
+                                                 
 
+    private void jButton_RegistrarMouseClicked(java.awt.event.MouseEvent evt) {                                               
+        dba x1 = new dba("./Lab9P2_AlberthGodoy_DiegoChavez.mbd");
+        x1.conectar();
+
+        try {
+           // x1.query.execute(" insert into Usuario (id, username, nombre, contra , edad, correo) values( '" +jTextField_UsuarioRegistro.getText()+ "' , "      ) ");
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }                                              
+    private void entrar(JDialog cosa) {
+        cosa.setModal(true);
+        cosa.pack();
+        cosa.setLocationRelativeTo(this);
+        cosa.setVisible(true);
+    }
+
+    private void cerrar(JDialog cosa) {
+        cosa.dispose();
+    }
     /**
      * @param args the command line arguments
      */
