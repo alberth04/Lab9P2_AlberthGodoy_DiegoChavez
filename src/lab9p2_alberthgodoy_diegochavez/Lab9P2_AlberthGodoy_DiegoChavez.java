@@ -43,11 +43,43 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
         jDialog_Inicio = new javax.swing.JDialog();
         jTabbedPane_Inicio = new javax.swing.JTabbedPane();
         jPanel_Juego = new javax.swing.JPanel();
+        jComboBox_Juego = new javax.swing.JComboBox<>();
+        jButton_EjecutarJuego = new javax.swing.JButton();
+        jButton_GenerarJuego = new javax.swing.JButton();
+        jTextField_NombreJuego2 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jTextField_NombreJuego = new javax.swing.JTextField();
+        jTextField_Categoria = new javax.swing.JTextField();
+        jTextField_Categoria2 = new javax.swing.JTextField();
+        jTextField_Costo = new javax.swing.JTextField();
+        jTextField_Costo2 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable_Juego2 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable_Juego = new javax.swing.JTable();
         jPanel_Idioma = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jTextField_NombreIdiomas = new javax.swing.JTextField();
+        jButton_AgregarIdioma = new javax.swing.JButton();
+        jComboBox_IdiomaJuego = new javax.swing.JComboBox<>();
+        jLabel15 = new javax.swing.JLabel();
+        jButton_CrearNombreIdiomas = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable_Idiomas = new javax.swing.JTable();
         jPanel_Correo = new javax.swing.JPanel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        jLabel16 = new javax.swing.JLabel();
+        jTextField_ParaCorreo = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jTextField_AsuntoCorreo = new javax.swing.JTextField();
+        jButton_EnviarCorreo = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea_MensajeCorreo = new javax.swing.JTextArea();
+        jMenuBar_Inicio = new javax.swing.JMenuBar();
+        jMenu_Archivo = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         jTextField_PasswordLogin = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -112,54 +144,121 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
 
         jDialog_Inicio.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel_JuegoLayout = new javax.swing.GroupLayout(jPanel_Juego);
-        jPanel_Juego.setLayout(jPanel_JuegoLayout);
-        jPanel_JuegoLayout.setHorizontalGroup(
-            jPanel_JuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 778, Short.MAX_VALUE)
-        );
-        jPanel_JuegoLayout.setVerticalGroup(
-            jPanel_JuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 504, Short.MAX_VALUE)
-        );
+        jPanel_Juego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTabbedPane_Inicio.addTab("tab1", jPanel_Juego);
+        jComboBox_Juego.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel_Juego.add(jComboBox_Juego, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 150, -1));
 
-        javax.swing.GroupLayout jPanel_IdiomaLayout = new javax.swing.GroupLayout(jPanel_Idioma);
-        jPanel_Idioma.setLayout(jPanel_IdiomaLayout);
-        jPanel_IdiomaLayout.setHorizontalGroup(
-            jPanel_IdiomaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 778, Short.MAX_VALUE)
-        );
-        jPanel_IdiomaLayout.setVerticalGroup(
-            jPanel_IdiomaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 504, Short.MAX_VALUE)
-        );
+        jButton_EjecutarJuego.setText("Ejecutar");
+        jPanel_Juego.add(jButton_EjecutarJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 110, -1));
 
-        jTabbedPane_Inicio.addTab("tab2", jPanel_Idioma);
+        jButton_GenerarJuego.setText("Generar");
+        jPanel_Juego.add(jButton_GenerarJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 110, -1));
+        jPanel_Juego.add(jTextField_NombreJuego2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, 210, -1));
 
-        javax.swing.GroupLayout jPanel_CorreoLayout = new javax.swing.GroupLayout(jPanel_Correo);
-        jPanel_Correo.setLayout(jPanel_CorreoLayout);
-        jPanel_CorreoLayout.setHorizontalGroup(
-            jPanel_CorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 778, Short.MAX_VALUE)
-        );
-        jPanel_CorreoLayout.setVerticalGroup(
-            jPanel_CorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 504, Short.MAX_VALUE)
-        );
+        jLabel10.setText("Costo");
+        jPanel_Juego.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 40, -1));
+        jPanel_Juego.add(jTextField_NombreJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 40, 210, -1));
+        jPanel_Juego.add(jTextField_Categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 210, -1));
+        jPanel_Juego.add(jTextField_Categoria2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 80, 210, -1));
+        jPanel_Juego.add(jTextField_Costo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 210, -1));
+        jPanel_Juego.add(jTextField_Costo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, 210, -1));
 
-        jTabbedPane_Inicio.addTab("tab3", jPanel_Correo);
+        jLabel11.setText("Nombre");
+        jPanel_Juego.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, -1, -1));
 
-        jDialog_Inicio.getContentPane().add(jTabbedPane_Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 530));
+        jLabel12.setText("Categoria");
+        jPanel_Juego.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, -1, -1));
+        jPanel_Juego.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 720, 40));
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        jTable_Juego2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+            },
+            new String [] {
+                "ID", "Nombre", "Categoria", "Costo", "Idiomas"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable_Juego2);
 
-        jDialog_Inicio.setJMenuBar(jMenuBar1);
+        jPanel_Juego.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 700, 140));
+
+        jTable_Juego.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nombre", "Categoria", "Costo", "Idiomas"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable_Juego);
+
+        jPanel_Juego.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 700, 140));
+
+        jTabbedPane_Inicio.addTab("Juego", jPanel_Juego);
+
+        jPanel_Idioma.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel14.setText("Nombre");
+        jPanel_Idioma.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 50, 20));
+        jPanel_Idioma.add(jTextField_NombreIdiomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 200, -1));
+
+        jButton_AgregarIdioma.setText("Agregar");
+        jPanel_Idioma.add(jButton_AgregarIdioma, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 200, -1));
+
+        jComboBox_IdiomaJuego.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel_Idioma.add(jComboBox_IdiomaJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 190, 30));
+
+        jLabel15.setText("Idioma a Juego");
+        jPanel_Idioma.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 110, -1));
+
+        jButton_CrearNombreIdiomas.setText("Crear");
+        jPanel_Idioma.add(jButton_CrearNombreIdiomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 200, -1));
+
+        jTable_Idiomas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nombre"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable_Idiomas);
+
+        jPanel_Idioma.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 750, 390));
+
+        jTabbedPane_Inicio.addTab("Idiomas", jPanel_Idioma);
+
+        jPanel_Correo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel16.setText("Para");
+        jPanel_Correo.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 40, -1));
+        jPanel_Correo.add(jTextField_ParaCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 160, -1));
+
+        jLabel17.setText("Mensaje");
+        jPanel_Correo.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 50, -1));
+        jPanel_Correo.add(jTextField_AsuntoCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 160, -1));
+
+        jButton_EnviarCorreo.setText("Enviar");
+        jPanel_Correo.add(jButton_EnviarCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 90, -1));
+
+        jLabel18.setText("Asunto");
+        jPanel_Correo.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 50, -1));
+
+        jTextArea_MensajeCorreo.setColumns(20);
+        jTextArea_MensajeCorreo.setRows(5);
+        jScrollPane4.setViewportView(jTextArea_MensajeCorreo);
+
+        jPanel_Correo.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 750, 340));
+
+        jTabbedPane_Inicio.addTab("Correo", jPanel_Correo);
+
+        jDialog_Inicio.getContentPane().add(jTabbedPane_Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 560));
+
+        jMenu_Archivo.setText("Archivo");
+        jMenuBar_Inicio.add(jMenu_Archivo);
+
+        jDialog_Inicio.setJMenuBar(jMenuBar_Inicio);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(303, 379));
@@ -290,12 +389,28 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton_AgregarIdioma;
+    private javax.swing.JButton jButton_CrearNombreIdiomas;
+    private javax.swing.JButton jButton_EjecutarJuego;
+    private javax.swing.JButton jButton_EnviarCorreo;
+    private javax.swing.JButton jButton_GenerarJuego;
     private javax.swing.JButton jButton_IngresarLogin;
     private javax.swing.JButton jButton_Registrar;
     private javax.swing.JButton jButton_RegistroButton;
+    private javax.swing.JComboBox<String> jComboBox_IdiomaJuego;
+    private javax.swing.JComboBox<String> jComboBox_Juego;
     private javax.swing.JDialog jDialog_Inicio;
     private javax.swing.JDialog jDialog_Registro;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -304,17 +419,33 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar_Inicio;
+    private javax.swing.JMenu jMenu_Archivo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel_Correo;
     private javax.swing.JPanel jPanel_Idioma;
     private javax.swing.JPanel jPanel_Juego;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSpinner jSpinner_EdadRegistro;
     private javax.swing.JTabbedPane jTabbedPane_Inicio;
+    private javax.swing.JTable jTable_Idiomas;
+    private javax.swing.JTable jTable_Juego;
+    private javax.swing.JTable jTable_Juego2;
+    private javax.swing.JTextArea jTextArea_MensajeCorreo;
+    private javax.swing.JTextField jTextField_AsuntoCorreo;
+    private javax.swing.JTextField jTextField_Categoria;
+    private javax.swing.JTextField jTextField_Categoria2;
     private javax.swing.JTextField jTextField_CorreRegistro;
+    private javax.swing.JTextField jTextField_Costo;
+    private javax.swing.JTextField jTextField_Costo2;
+    private javax.swing.JTextField jTextField_NombreIdiomas;
+    private javax.swing.JTextField jTextField_NombreJuego;
+    private javax.swing.JTextField jTextField_NombreJuego2;
     private javax.swing.JTextField jTextField_NombreRegistro;
+    private javax.swing.JTextField jTextField_ParaCorreo;
     private javax.swing.JTextField jTextField_PasswordLogin;
     private javax.swing.JTextField jTextField_PasswordRegistro;
     private javax.swing.JTextField jTextField_UsuarioLogin;
