@@ -4,11 +4,14 @@
  * and open the template in the editor.
  */
 package lab9p2_alberthgodoy_diegochavez;
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JDialog;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import static lab9p2_alberthgodoy_diegochavez.LibLab9.encrypt;
+
 /**
  *
  * @author godoy
@@ -103,6 +106,7 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
         jButton_RegistroButton = new javax.swing.JButton();
         jButton_IngresarLogin = new javax.swing.JButton();
 
+        jDialog_Registro.setPreferredSize(new java.awt.Dimension(550, 360));
         jDialog_Registro.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -154,6 +158,11 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
         jDialog_Registro.getContentPane().add(jSpinner_EdadRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 140, -1));
 
         jButton_Registrar.setText("Registro");
+        jButton_Registrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_RegistrarMouseClicked(evt);
+            }
+        });
         jDialog_Registro.getContentPane().add(jButton_Registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 140, 50));
 
         jDialog_Inicio.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -228,6 +237,11 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
         jPanel_Idioma.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 110, -1));
 
         jButton_CrearNombreIdiomas.setText("Crear");
+        jButton_CrearNombreIdiomas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_CrearNombreIdiomasMouseClicked(evt);
+            }
+        });
         jPanel_Idioma.add(jButton_CrearNombreIdiomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 200, -1));
 
         jTable_Idiomas.setModel(new javax.swing.table.DefaultTableModel(
@@ -397,7 +411,7 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
 
     private void jButton_IngresarLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_IngresarLoginMouseClicked
         //Ingresar Usuario
-        //Cargar base de Datos
+        //Cargar base de Dato s
         dba db = new dba("./Lab9P2_AlberthGodoy_DiegoChavez.mdb");
         listaUsuarios = new ArrayList();
         db.conectar();
@@ -406,7 +420,7 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
             ResultSet rs = db.query.getResultSet();
             while (rs.next()) {
                 //Agregar usuarios segun la base de datos
-                listaUsuarios.add(new usuario(rs.getInt(1), rs.getString(2), rs.getString(3), 
+                listaUsuarios.add(new usuario(rs.getInt(1), rs.getString(2), rs.getString(3),
                         rs.getString(4), rs.getInt(5), rs.getString(6)));
             }
         } catch (SQLException ex) {
@@ -415,33 +429,54 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
         db.desconectar();
         //Identificiar los Usuarios
         for (usuario userSelect : listaUsuarios) {
-            if (jTextField_UsuarioLogin.getText().equals(userSelect.getUsername()) && 
-                    jTextField_PasswordLogin.getText().equals(userSelect.getContra())) {
+            if (jTextField_UsuarioLogin.getText().equals(userSelect.getUsername())
+                    && jTextField_PasswordLogin.getText().equals(userSelect.getContra())) {
                 jDialog_Inicio.pack();
                 jDialog_Inicio.setModal(true);
                 jDialog_Inicio.setLocationRelativeTo(jButton_IngresarLogin);
-                JOptionPane.showMessageDialog(jButton_IngresarLogin, String.format("Bienvenido %s", userSelect.getNombre()), 
+                JOptionPane.showMessageDialog(jButton_IngresarLogin, String.format("Bienvenido %s", userSelect.getNombre()),
                         "LOGIN", JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }//GEN-LAST:event_jButton_IngresarLoginMouseClicked
 
-    private void jButton_RegistrarMouseClicked(java.awt.event.MouseEvent evt) {
-        dba x1 = new dba("./Lab9P2_AlberthGodoy_DiegoChavez.mbd");
+    private void jButton_RegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_RegistrarMouseClicked
+       //Registro
+       dba x1 = new dba("./Lab9P2_AlberthGodoy_DiegoChavez.mdb");
         x1.conectar();
 
         try {
-            // x1.query.execute(" insert into Usuario (id, username, nombre, contra , edad, correo) values( '" +jTextField_UsuarioRegistro.getText()+ "' , "      ) ");
-
+            String po = encrypt(jTextField_PasswordRegistro.getText());
+            x1.query.execute(" insert into Usuario ( username, nombre, contra , edad, correo) values( '" +jTextField_UsuarioRegistro.getText() +" ','" 
+                    + jTextField_NombreRegistro.getText() + "','"+ po+ "','"+  jSpinner_EdadRegistro.getValue()+"','"+jTextField_CorreRegistro.getText()+   "')" );
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+        x1.desconectar();
+        JOptionPane.showMessageDialog(jButton_Registrar, "Usuario Creado",
+                        "LOGIN", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jButton_RegistrarMouseClicked
+
+    private void jButton_CrearNombreIdiomasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_CrearNombreIdiomasMouseClicked
+        dba x1 = new dba("./Lab9P2_AlberthGodoy_DiegoChavez.mdb");
+        x1.conectar();
+
+        try {
+            x1.query.execute(" insert into Idiomas ( username, nombre, contra , edad, correo) values( '" +jTextField_NombreIdiomas.getText() +  "')" );
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+         x1.desconectar();
+         JOptionPane.showMessageDialog(jButton_IngresarLogin, "Idioma Creado",
+                        "LOGIN", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jButton_CrearNombreIdiomasMouseClicked
 
     private void entrar(JDialog cosa) {
         cosa.setModal(true);
         cosa.pack();
-        cosa.setLocationRelativeTo(this);
+        //cosa.setLocationRelativeTo(this);
         cosa.setVisible(true);
     }
 
