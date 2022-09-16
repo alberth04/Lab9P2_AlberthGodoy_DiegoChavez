@@ -27,21 +27,232 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jDialog_Registro = new javax.swing.JDialog();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField_UsuarioRegistro = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField_NombreRegistro = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jTextField_PasswordRegistro = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField_CorreRegistro = new javax.swing.JTextField();
+        jSpinner_EdadRegistro = new javax.swing.JSpinner();
+        jButton_Registrar = new javax.swing.JButton();
+        jDialog_Inicio = new javax.swing.JDialog();
+        jTabbedPane_Inicio = new javax.swing.JTabbedPane();
+        jPanel_Juego = new javax.swing.JPanel();
+        jPanel_Idioma = new javax.swing.JPanel();
+        jPanel_Correo = new javax.swing.JPanel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jPanel1 = new javax.swing.JPanel();
+        jTextField_PasswordLogin = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField_UsuarioLogin = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jButton_RegistroButton = new javax.swing.JButton();
+        jButton_IngresarLogin = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 732, Short.MAX_VALUE)
+        jDialog_Registro.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel1.setText("Registro");
+        jDialog_Registro.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 20, 80, -1));
+
+        jLabel2.setText("Usuario");
+        jDialog_Registro.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 62, 41, -1));
+
+        jTextField_UsuarioRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_UsuarioRegistroActionPerformed(evt);
+            }
+        });
+        jDialog_Registro.getContentPane().add(jTextField_UsuarioRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 84, 150, -1));
+
+        jLabel3.setText("Nombre");
+        jDialog_Registro.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 70, -1));
+
+        jTextField_NombreRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_NombreRegistroActionPerformed(evt);
+            }
+        });
+        jDialog_Registro.getContentPane().add(jTextField_NombreRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 150, -1));
+
+        jLabel7.setText("Edad");
+        jDialog_Registro.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 41, -1));
+
+        jLabel8.setText("Contraseña");
+        jDialog_Registro.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 70, -1));
+
+        jTextField_PasswordRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_PasswordRegistroActionPerformed(evt);
+            }
+        });
+        jDialog_Registro.getContentPane().add(jTextField_PasswordRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 150, -1));
+
+        jLabel9.setText("Correo");
+        jDialog_Registro.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 41, -1));
+
+        jTextField_CorreRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_CorreRegistroActionPerformed(evt);
+            }
+        });
+        jDialog_Registro.getContentPane().add(jTextField_CorreRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 150, -1));
+        jDialog_Registro.getContentPane().add(jSpinner_EdadRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 140, -1));
+
+        jButton_Registrar.setText("Registro");
+        jDialog_Registro.getContentPane().add(jButton_Registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 140, 50));
+
+        jDialog_Inicio.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        javax.swing.GroupLayout jPanel_JuegoLayout = new javax.swing.GroupLayout(jPanel_Juego);
+        jPanel_Juego.setLayout(jPanel_JuegoLayout);
+        jPanel_JuegoLayout.setHorizontalGroup(
+            jPanel_JuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 778, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 525, Short.MAX_VALUE)
+        jPanel_JuegoLayout.setVerticalGroup(
+            jPanel_JuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 504, Short.MAX_VALUE)
         );
+
+        jTabbedPane_Inicio.addTab("tab1", jPanel_Juego);
+
+        javax.swing.GroupLayout jPanel_IdiomaLayout = new javax.swing.GroupLayout(jPanel_Idioma);
+        jPanel_Idioma.setLayout(jPanel_IdiomaLayout);
+        jPanel_IdiomaLayout.setHorizontalGroup(
+            jPanel_IdiomaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 778, Short.MAX_VALUE)
+        );
+        jPanel_IdiomaLayout.setVerticalGroup(
+            jPanel_IdiomaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 504, Short.MAX_VALUE)
+        );
+
+        jTabbedPane_Inicio.addTab("tab2", jPanel_Idioma);
+
+        javax.swing.GroupLayout jPanel_CorreoLayout = new javax.swing.GroupLayout(jPanel_Correo);
+        jPanel_Correo.setLayout(jPanel_CorreoLayout);
+        jPanel_CorreoLayout.setHorizontalGroup(
+            jPanel_CorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 778, Short.MAX_VALUE)
+        );
+        jPanel_CorreoLayout.setVerticalGroup(
+            jPanel_CorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 504, Short.MAX_VALUE)
+        );
+
+        jTabbedPane_Inicio.addTab("tab3", jPanel_Correo);
+
+        jDialog_Inicio.getContentPane().add(jTabbedPane_Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 530));
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        jDialog_Inicio.setJMenuBar(jMenuBar1);
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(303, 379));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setText("Contraseña");
+
+        jLabel5.setText("Usuario");
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel6.setText("LOGIN");
+
+        jButton_RegistroButton.setText("Registro");
+
+        jButton_IngresarLogin.setText("Ingresar");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(93, Short.MAX_VALUE)
+                .addComponent(jButton_RegistroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField_UsuarioLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(4, 4, 4)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(4, 4, 4)
+                            .addComponent(jTextField_PasswordLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(92, Short.MAX_VALUE)
+                    .addComponent(jButton_IngresarLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(72, 72, 72)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 257, Short.MAX_VALUE)
+                .addComponent(jButton_RegistroButton)
+                .addGap(43, 43, 43))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 80, Short.MAX_VALUE)
+                    .addComponent(jLabel5)
+                    .addGap(28, 28, 28)
+                    .addComponent(jTextField_UsuarioLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(20, 20, 20)
+                    .addComponent(jLabel4)
+                    .addGap(24, 24, 24)
+                    .addComponent(jTextField_PasswordLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 148, Short.MAX_VALUE)))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(276, Short.MAX_VALUE)
+                    .addComponent(jButton_IngresarLogin)
+                    .addGap(80, 80, 80)))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 380));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField_UsuarioRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_UsuarioRegistroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_UsuarioRegistroActionPerformed
+
+    private void jTextField_NombreRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_NombreRegistroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_NombreRegistroActionPerformed
+
+    private void jTextField_PasswordRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PasswordRegistroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_PasswordRegistroActionPerformed
+
+    private void jTextField_CorreRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_CorreRegistroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_CorreRegistroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +290,34 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton_IngresarLogin;
+    private javax.swing.JButton jButton_Registrar;
+    private javax.swing.JButton jButton_RegistroButton;
+    private javax.swing.JDialog jDialog_Inicio;
+    private javax.swing.JDialog jDialog_Registro;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel_Correo;
+    private javax.swing.JPanel jPanel_Idioma;
+    private javax.swing.JPanel jPanel_Juego;
+    private javax.swing.JSpinner jSpinner_EdadRegistro;
+    private javax.swing.JTabbedPane jTabbedPane_Inicio;
+    private javax.swing.JTextField jTextField_CorreRegistro;
+    private javax.swing.JTextField jTextField_NombreRegistro;
+    private javax.swing.JTextField jTextField_PasswordLogin;
+    private javax.swing.JTextField jTextField_PasswordRegistro;
+    private javax.swing.JTextField jTextField_UsuarioLogin;
+    private javax.swing.JTextField jTextField_UsuarioRegistro;
     // End of variables declaration//GEN-END:variables
 }
