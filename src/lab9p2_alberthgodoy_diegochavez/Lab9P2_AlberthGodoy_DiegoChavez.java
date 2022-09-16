@@ -5,15 +5,22 @@
  */
 package lab9p2_alberthgodoy_diegochavez;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author godoy
  */
 public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
-
+    
+    private ArrayList<usuario> listaUsuarios = new ArrayList();
+    private ArrayList<juegos> listaJuegos = new ArrayList();
+    private ArrayList<idiomas> listaIdiomas = new ArrayList();
+    
     /**
      * Creates new form Lab9P2_AlberthGodoy_DiegoChavez
      */
+   
     public Lab9P2_AlberthGodoy_DiegoChavez() {
         initComponents();
     }
@@ -293,8 +300,18 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
         jLabel6.setText("LOGIN");
 
         jButton_RegistroButton.setText("Registro");
+        jButton_RegistroButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_RegistroButtonMouseClicked(evt);
+            }
+        });
 
         jButton_IngresarLogin.setText("Ingresar");
+        jButton_IngresarLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_IngresarLoginMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -372,6 +389,16 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
     private void jTextField_CorreRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_CorreRegistroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_CorreRegistroActionPerformed
+
+    private void jButton_RegistroButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_RegistroButtonMouseClicked
+        //abrir el dialog de registro
+        
+    }//GEN-LAST:event_jButton_RegistroButtonMouseClicked
+
+    private void jButton_IngresarLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_IngresarLoginMouseClicked
+        //Ingresar Usuario
+        
+    }//GEN-LAST:event_jButton_IngresarLoginMouseClicked
 
     /**
      * @param args the command line arguments

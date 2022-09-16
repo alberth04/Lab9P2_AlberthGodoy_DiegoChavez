@@ -43,6 +43,9 @@ public class usuario {
     }
 
     public void setCorreo(String correo) {
+        if (correo.matches("")) {
+            
+        }
         this.correo = correo;
     }
 
