@@ -536,6 +536,30 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Archivo"/>
               </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_AbrirArchivo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Abrir Archivo"/>
+                  </Properties>
+                </MenuItem>
+                <Menu class="javax.swing.JMenu" name="jMenu_ArchivosReciente">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Archivos Reciente"/>
+                  </Properties>
+                </Menu>
+                <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator_1">
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_Limpiar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Limpiar "/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_Salir">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Salir"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
             </Menu>
           </SubComponents>
         </Menu>

@@ -80,6 +80,11 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
         jTextArea_MensajeCorreo = new javax.swing.JTextArea();
         jMenuBar_Inicio = new javax.swing.JMenuBar();
         jMenu_Archivo = new javax.swing.JMenu();
+        jMenuItem_AbrirArchivo = new javax.swing.JMenuItem();
+        jMenu_ArchivosReciente = new javax.swing.JMenu();
+        jSeparator_1 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem_Limpiar = new javax.swing.JMenuItem();
+        jMenuItem_Salir = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jTextField_PasswordLogin = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -256,6 +261,20 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
         jDialog_Inicio.getContentPane().add(jTabbedPane_Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 560));
 
         jMenu_Archivo.setText("Archivo");
+
+        jMenuItem_AbrirArchivo.setText("Abrir Archivo");
+        jMenu_Archivo.add(jMenuItem_AbrirArchivo);
+
+        jMenu_ArchivosReciente.setText("Archivos Reciente");
+        jMenu_Archivo.add(jMenu_ArchivosReciente);
+        jMenu_Archivo.add(jSeparator_1);
+
+        jMenuItem_Limpiar.setText("Limpiar ");
+        jMenu_Archivo.add(jMenuItem_Limpiar);
+
+        jMenuItem_Salir.setText("Salir");
+        jMenu_Archivo.add(jMenuItem_Salir);
+
         jMenuBar_Inicio.add(jMenu_Archivo);
 
         jDialog_Inicio.setJMenuBar(jMenuBar_Inicio);
@@ -420,7 +439,11 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar_Inicio;
+    private javax.swing.JMenuItem jMenuItem_AbrirArchivo;
+    private javax.swing.JMenuItem jMenuItem_Limpiar;
+    private javax.swing.JMenuItem jMenuItem_Salir;
     private javax.swing.JMenu jMenu_Archivo;
+    private javax.swing.JMenu jMenu_ArchivosReciente;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel_Correo;
     private javax.swing.JPanel jPanel_Idioma;
@@ -429,6 +452,7 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JPopupMenu.Separator jSeparator_1;
     private javax.swing.JSpinner jSpinner_EdadRegistro;
     private javax.swing.JTabbedPane jTabbedPane_Inicio;
     private javax.swing.JTable jTable_Idiomas;
