@@ -1,7 +1,7 @@
-
 package lab9p2_alberthgodoy_diegochavez;
 
 public class usuario {
+
     //ID, usuario, nombre, contraseña, edad y correo.
     private String ID;
     private String username;
@@ -43,9 +43,6 @@ public class usuario {
     }
 
     public void setCorreo(String correo) {
-        if (correo.matches("")) {
-            
-        }
         this.correo = correo;
     }
 
@@ -77,7 +74,5 @@ public class usuario {
     public String toString() {
         return "usuario{" + "ID=" + ID + ", username=" + username + ", nombre=" + nombre + ", contra=" + contra + ", edad=" + edad + ", correo=" + correo + '}';
     }
-    
-    
-    
+
 }
