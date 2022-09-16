@@ -392,7 +392,7 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
 
     private void jButton_RegistroButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_RegistroButtonMouseClicked
         //abrir el dialog de registro
-        
+        System.out.println("holadiego");
     }//GEN-LAST:event_jButton_RegistroButtonMouseClicked
 
     private void jButton_IngresarLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_IngresarLoginMouseClicked
