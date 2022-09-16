@@ -60,6 +60,7 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
         jTable_Juego2 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable_Juego = new javax.swing.JTable();
+        jProgressBar_Juego = new javax.swing.JProgressBar();
         jPanel_Idioma = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jTextField_NombreIdiomas = new javax.swing.JTextField();
@@ -152,29 +153,29 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
         jPanel_Juego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jComboBox_Juego.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel_Juego.add(jComboBox_Juego, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 150, -1));
+        jPanel_Juego.add(jComboBox_Juego, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 150, -1));
 
         jButton_EjecutarJuego.setText("Ejecutar");
-        jPanel_Juego.add(jButton_EjecutarJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 110, -1));
+        jPanel_Juego.add(jButton_EjecutarJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 110, -1));
 
         jButton_GenerarJuego.setText("Generar");
-        jPanel_Juego.add(jButton_GenerarJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 110, -1));
-        jPanel_Juego.add(jTextField_NombreJuego2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, 210, -1));
+        jPanel_Juego.add(jButton_GenerarJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 110, -1));
+        jPanel_Juego.add(jTextField_NombreJuego2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 20, 210, -1));
 
         jLabel10.setText("Costo");
-        jPanel_Juego.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 40, -1));
-        jPanel_Juego.add(jTextField_NombreJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 40, 210, -1));
-        jPanel_Juego.add(jTextField_Categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 210, -1));
-        jPanel_Juego.add(jTextField_Categoria2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 80, 210, -1));
-        jPanel_Juego.add(jTextField_Costo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 210, -1));
-        jPanel_Juego.add(jTextField_Costo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, 210, -1));
+        jPanel_Juego.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 40, -1));
+        jPanel_Juego.add(jTextField_NombreJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 210, -1));
+        jPanel_Juego.add(jTextField_Categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 210, -1));
+        jPanel_Juego.add(jTextField_Categoria2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, 210, -1));
+        jPanel_Juego.add(jTextField_Costo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 210, -1));
+        jPanel_Juego.add(jTextField_Costo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 210, -1));
 
         jLabel11.setText("Nombre");
-        jPanel_Juego.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, -1, -1));
+        jPanel_Juego.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
 
         jLabel12.setText("Categoria");
-        jPanel_Juego.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, -1, -1));
-        jPanel_Juego.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 720, 40));
+        jPanel_Juego.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, -1, -1));
+        jPanel_Juego.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 720, 20));
 
         jTable_Juego2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -199,6 +200,7 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable_Juego);
 
         jPanel_Juego.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 700, 140));
+        jPanel_Juego.add(jProgressBar_Juego, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 152, 700, 50));
 
         jTabbedPane_Inicio.addTab("Juego", jPanel_Juego);
 
@@ -447,6 +449,7 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_Correo;
     private javax.swing.JPanel jPanel_Idioma;
     private javax.swing.JPanel jPanel_Juego;
+    private javax.swing.JProgressBar jProgressBar_Juego;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
