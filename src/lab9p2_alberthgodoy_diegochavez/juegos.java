@@ -22,6 +22,8 @@ public class juegos {
         this.costo = costo;
         this.nombre = nombre;
     }
+    
+    
 
     public String getCategoria() {
         return categoria;
@@ -55,6 +57,8 @@ public class juegos {
         this.listaidiomas = listaidiomas;
     }
 
+
+        
     @Override
     public String toString() {
         return "juegos{" + "categoria=" + categoria + ", costo=" + costo + ", nombre=" + nombre + ", listaidiomas=" + listaidiomas + '}';

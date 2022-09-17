@@ -10,6 +10,11 @@ import java.util.ArrayList;
 import javax.swing.JDialog;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.JTree;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 import static lab9p2_alberthgodoy_diegochavez.LibLab9.encrypt;
 
 /**
@@ -169,10 +174,15 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
 
         jPanel_Juego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jComboBox_Juego.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox_Juego.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Crear", "Modificar" }));
         jPanel_Juego.add(jComboBox_Juego, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 150, -1));
 
         jButton_EjecutarJuego.setText("Ejecutar");
+        jButton_EjecutarJuego.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_EjecutarJuegoMouseClicked(evt);
+            }
+        });
         jPanel_Juego.add(jButton_EjecutarJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 110, -1));
 
         jButton_GenerarJuego.setText("Generar");
@@ -199,7 +209,7 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nombre", "Categoria", "Costo", "Idiomas"
+                "Nombre", "Categoria", "Costo", "Idiomas"
             }
         ));
         jScrollPane1.setViewportView(jTable_Juego2);
@@ -429,33 +439,36 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
         db.desconectar();
         //Identificiar los Usuarios
         for (usuario userSelect : listaUsuarios) {
-            if (jTextField_UsuarioLogin.getText().equals(userSelect.getUsername())
-                    && jTextField_PasswordLogin.getText().equals(userSelect.getContra())) {
+            if (userSelect.getUsername().equals(jTextField_UsuarioLogin.getText()) && userSelect.getContra().equals(jTextField_PasswordLogin.getText())) {
                 jDialog_Inicio.pack();
-                jDialog_Inicio.setModal(true);
                 jDialog_Inicio.setLocationRelativeTo(jButton_IngresarLogin);
+                jDialog_Inicio.setModal(true);
                 JOptionPane.showMessageDialog(jButton_IngresarLogin, String.format("Bienvenido %s", userSelect.getNombre()),
                         "LOGIN", JOptionPane.INFORMATION_MESSAGE);
+                jDialog_Inicio.setVisible(true);
+
+            } else {
+                System.out.println("error");
             }
         }
     }//GEN-LAST:event_jButton_IngresarLoginMouseClicked
 
     private void jButton_RegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_RegistrarMouseClicked
-       //Registro
-       dba x1 = new dba("./Lab9P2_AlberthGodoy_DiegoChavez.mdb");
+        //Registro
+        dba x1 = new dba("./Lab9P2_AlberthGodoy_DiegoChavez.mdb");
         x1.conectar();
 
         try {
             String po = encrypt(jTextField_PasswordRegistro.getText());
-            x1.query.execute(" insert into Usuario ( username, nombre, contra , edad, correo) values( '" +jTextField_UsuarioRegistro.getText() +" ','" 
-                    + jTextField_NombreRegistro.getText() + "','"+ po+ "','"+  jSpinner_EdadRegistro.getValue()+"','"+jTextField_CorreRegistro.getText()+   "')" );
-            
+            x1.query.execute(" insert into Usuario ( username, nombre, contra , edad, correo) values( '" + jTextField_UsuarioRegistro.getText() + "','"
+                    + jTextField_NombreRegistro.getText() + "','" + po + "','" + jSpinner_EdadRegistro.getValue() + "','" + jTextField_CorreRegistro.getText() + "')");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
         x1.desconectar();
         JOptionPane.showMessageDialog(jButton_Registrar, "Usuario Creado",
-                        "LOGIN", JOptionPane.INFORMATION_MESSAGE);
+                "LOGIN", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton_RegistrarMouseClicked
 
     private void jButton_CrearNombreIdiomasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_CrearNombreIdiomasMouseClicked
@@ -463,15 +476,109 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
         x1.conectar();
 
         try {
-            x1.query.execute(" insert into Idiomas ( username, nombre, contra , edad, correo) values( '" +jTextField_NombreIdiomas.getText() +  "')" );
-            
+            x1.query.execute(" insert into Idiomas ( username, nombre, contra , edad, correo) values( '" + jTextField_NombreIdiomas.getText() + "')");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-         x1.desconectar();
-         JOptionPane.showMessageDialog(jButton_IngresarLogin, "Idioma Creado",
-                        "LOGIN", JOptionPane.INFORMATION_MESSAGE);
+        x1.desconectar();
+        JOptionPane.showMessageDialog(jButton_IngresarLogin, "Idioma Creado",
+                "LOGIN", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton_CrearNombreIdiomasMouseClicked
+
+    private void jButton_EjecutarJuegoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_EjecutarJuegoMouseClicked
+        //Agregar Juego
+        if (jComboBox_Juego.getSelectedItem().toString().equals("Crear")) {
+            //Agregar en base de datos
+            dba db = new dba("./Lab9P2_AlberthGodoy_DiegoChavez.mdb");
+            db.conectar();
+            try {
+                db.query.execute(String.format("INSERT INTO Juegos"
+                        + " (categoria,costo,nombre)"
+                        + "VALUES ('%s',%d,'%s')", jTextField_Categoria.getText(),
+                        Integer.parseInt(jTextField_Costo.getText()),
+                        jTextField_NombreJuego.getText()));
+                db.commit();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            db.desconectar();
+            JOptionPane.showMessageDialog(jPanel_Juego, "Juego Creado",
+                    "LOGIN", JOptionPane.INFORMATION_MESSAGE);
+            //Cargar el arraylist
+            listaJuegos = new ArrayList();
+            db = new dba("./Lab9P2_AlberthGodoy_DiegoChavez.mdb");
+            db.conectar();
+            try {
+                db.query.execute("select categoria,costo,nombre from Juegos");
+                ResultSet rs = db.query.getResultSet();
+                while (rs.next()) {
+                    listaJuegos.add(new juegos(rs.getString(1), rs.getInt(2), rs.getString(3)));
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            db.desconectar();
+            cargarJtable(jTable_Juego2, listaJuegos);
+        } else {
+            //Modificar
+            //Cargar Juego
+            listaJuegos = new ArrayList();
+            dba db = new dba("./Lab9P2_AlberthGodoy_DiegoChavez.mdb");
+            db.conectar();
+            try {
+                db.query.execute("select categoria,costo,nombre from Juegos");
+                ResultSet rs = db.query.getResultSet();
+                while (rs.next()) {
+                    listaJuegos.add(new juegos(rs.getString(1), rs.getInt(2), rs.getString(3)));
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            db.desconectar();
+            try {
+                boolean entra = false;
+                juegos juegoSupuesto = new juegos(jTextField_Categoria.getText(), Integer.parseInt(
+                        jTextField_Costo.getText()), jTextField_NombreJuego.getText());
+                for (juegos listaJuego : listaJuegos) {
+                    if (listaJuego.getNombre().equals(juegoSupuesto.getNombre())
+                            && listaJuego.getCosto() == juegoSupuesto.getCosto()
+                            && listaJuego.getCategoria().equals(juegoSupuesto.getCategoria())) {
+                        entra = true;
+                    }
+                }
+                if (!entra) {
+                    throw new Exception("El juego no existe para modificarlo");
+                } else {
+                    db = new dba("./Lab9P2_AlberthGodoy_DiegoChavez.mdb");
+                    db.conectar();
+                    try {
+
+                        db.query.execute(String.format("update Juegos set categoria= '%s' where nombre='%s'", jTextField_Categoria2.getText(),
+                                juegoSupuesto.getNombre()));
+                        db.commit();
+                        db.query.execute(String.format("update Juegos set costo= %d where nombre='%s'", Integer.parseInt(jTextField_Costo2.getText()),
+                                juegoSupuesto.getNombre()));
+                        db.commit();
+                        db.query.execute(String.format("update Juegos set nombre= '%s' where nombre= '%s'", jTextField_NombreJuego2.getText(),
+                                juegoSupuesto.getNombre()));
+                        db.commit();
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                    db.desconectar();
+                    JOptionPane.showMessageDialog(jPanel_Juego, "Juego Modificado",
+                            "LOGIN", JOptionPane.INFORMATION_MESSAGE);
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(jPanel_Juego, e,
+                        "LOGIN", JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
+
+    }//GEN-LAST:event_jButton_EjecutarJuegoMouseClicked
 
     private void entrar(JDialog cosa) {
         cosa.setModal(true);
@@ -482,6 +589,24 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
 
     private void cerrar(JDialog cosa) {
         cosa.dispose();
+    }
+
+    public void cargarJtable(JTable jTable, ArrayList array) {
+        //Modelo de la tabla
+        //Base de Datos
+        DefaultTableModel JtableMode
+                = (DefaultTableModel) jTable.getModel();
+        JtableMode.setRowCount(0);
+        for (int i = 0; i < array.size(); i++) {
+            juegos tareaSelect = (juegos) array.get(i);
+            Object[] newRow = {
+                tareaSelect.getNombre(),
+                tareaSelect.getCategoria(),
+                tareaSelect.getCosto(),};
+            JtableMode.addRow(newRow);
+        }
+        jTable.setModel(JtableMode);
+        jTable.repaint();
     }
 
     /**
