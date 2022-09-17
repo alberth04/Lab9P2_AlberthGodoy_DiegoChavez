@@ -4,11 +4,17 @@
  * and open the template in the editor.
  */
 package lab9p2_alberthgodoy_diegochavez;
-
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 
-public class juegos {
+public class juegos implements Serializable{
    // saber la categoría,
 //el costo del juego, su respectivo nombre y los idiomas en los que está el juego.
     private int id;
@@ -16,6 +22,7 @@ public class juegos {
     private double costo;
     private String nombre;
     private ArrayList<idiomas> listaidiomas = new ArrayList();
+    private String query;
 
     public juegos(String categoria, double costo, String nombre,int id) {
         this.categoria = categoria;
@@ -65,14 +72,11 @@ public class juegos {
     public void setId(int id) {
         this.id = id;
     }
-    
 
-        
-    @Override
-    public String toString() {
-        return "juegos{" + "categoria=" + categoria + ", costo=" + costo + ", nombre=" + nombre + ", listaidiomas=" + listaidiomas + '}';
-    }
+   
+   
     
     
     
 }
+      

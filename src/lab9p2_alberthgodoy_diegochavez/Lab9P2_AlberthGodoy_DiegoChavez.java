@@ -192,6 +192,11 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
         jPanel_Juego.add(jButton_EjecutarJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 110, -1));
 
         jButton_GenerarJuego.setText("Generar");
+        jButton_GenerarJuego.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_GenerarJuegoMouseClicked(evt);
+            }
+        });
         jPanel_Juego.add(jButton_GenerarJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 110, -1));
         jPanel_Juego.add(jTextField_NombreJuego2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 20, 210, -1));
 
@@ -749,6 +754,10 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jButton_EnviarCorreoMouseClicked
+
+    private void jButton_GenerarJuegoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_GenerarJuegoMouseClicked
+       
+    }//GEN-LAST:event_jButton_GenerarJuegoMouseClicked
 
     private void entrar(JDialog cosa) {
         cosa.setModal(true);
