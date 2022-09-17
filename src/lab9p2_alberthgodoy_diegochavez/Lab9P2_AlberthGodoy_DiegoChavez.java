@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JDialog;
 import java.sql.SQLException;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTree;
@@ -240,7 +241,6 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
         jButton_AgregarIdioma.setText("Agregar");
         jPanel_Idioma.add(jButton_AgregarIdioma, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 200, -1));
 
-        jComboBox_IdiomaJuego.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel_Idioma.add(jComboBox_IdiomaJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 190, 30));
 
         jLabel15.setText("Idioma a Juego");
@@ -445,6 +445,54 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
                 jDialog_Inicio.setModal(true);
                 JOptionPane.showMessageDialog(jButton_IngresarLogin, String.format("Bienvenido %s", userSelect.getNombre()),
                         "LOGIN", JOptionPane.INFORMATION_MESSAGE);
+                listaJuegos = new ArrayList();
+                db = new dba("./Lab9P2_AlberthGodoy_DiegoChavez.mdb");
+                db.conectar();
+                try {
+                    db.query.execute("select categoria,costo,nombre,id from Juegos");
+                    ResultSet rs = db.query.getResultSet();
+                    while (rs.next()) {
+                        listaJuegos.add(new juegos(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getInt(4)));
+                    }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+                db.desconectar();
+                //Cargar JComboBox
+                DefaultComboBoxModel comboModel = (DefaultComboBoxModel) jComboBox_IdiomaJuego.getModel();
+                for (int i = 0; i < listaJuegos.size(); i++) {
+                    comboModel.addElement(listaJuegos.get(i));
+                }
+                jComboBox_IdiomaJuego.setModel(comboModel);
+                //Cargar jTable
+                //Cargar Base de Datos idiomas
+                listaIdiomas = new ArrayList();
+                db = new dba("./Lab9P2_AlberthGodoy_DiegoChavez.mdb");
+                db.conectar();
+                try {
+                    db.query.execute("select id,nombre from Idiomas");
+                    ResultSet rs = db.query.getResultSet();
+                    while (rs.next()) {
+                        listaIdiomas.add(new idiomas(rs.getInt(1), rs.getString(2)));
+                    }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+                db.desconectar();
+                //Base de Datos
+                DefaultTableModel JtableMode
+                        = (DefaultTableModel) jTable_Idiomas.getModel();
+                JtableMode.setRowCount(0);
+                for (int i = 0; i < listaIdiomas.size(); i++) {
+                    idiomas idiomaSelect = (idiomas) listaIdiomas.get(i);
+                    Object[] newRow = {
+                        idiomaSelect.getID(),
+                        idiomaSelect.getIdioma(),};
+                    JtableMode.addRow(newRow);
+                }
+                jTable_Idiomas.setModel(JtableMode);
+                jTable_Idiomas.repaint();
+
                 jDialog_Inicio.setVisible(true);
 
             } else {
@@ -472,18 +520,72 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_RegistrarMouseClicked
 
     private void jButton_CrearNombreIdiomasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_CrearNombreIdiomasMouseClicked
-        dba x1 = new dba("./Lab9P2_AlberthGodoy_DiegoChavez.mdb");
-        x1.conectar();
-
+        //Cargar base de Datos
+        dba db = new dba("./Lab9P2_AlberthGodoy_DiegoChavez.mdb");
+        db.conectar();
         try {
-            x1.query.execute(" insert into Idiomas ( username, nombre, contra , edad, correo) values( '" + jTextField_NombreIdiomas.getText() + "')");
-
-        } catch (Exception e) {
-            e.printStackTrace();
+            db.query.execute(String.format("INSERT INTO Idiomas"
+                    + " (nombre)"
+                    + "VALUES ('%s')",
+                    jTextField_NombreIdiomas.getText()));
+            db.commit();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
-        x1.desconectar();
-        JOptionPane.showMessageDialog(jButton_IngresarLogin, "Idioma Creado",
+
+        db.desconectar();
+        //Cargar Base de Datos idiomas
+        listaIdiomas = new ArrayList();
+        db = new dba("./Lab9P2_AlberthGodoy_DiegoChavez.mdb");
+        db.conectar();
+        try {
+            db.query.execute("select id,nombre from Idiomas");
+            ResultSet rs = db.query.getResultSet();
+            while (rs.next()) {
+                listaIdiomas.add(new idiomas(rs.getInt(1), rs.getString(2)));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        db.desconectar();
+
+        //Base de Datos
+        DefaultTableModel JtableMode
+                = (DefaultTableModel) jTable_Idiomas.getModel();
+        JtableMode.setRowCount(0);
+        for (int i = 0; i < listaIdiomas.size(); i++) {
+            idiomas idiomaSelect = (idiomas) listaIdiomas.get(i);
+            Object[] newRow = {
+                idiomaSelect.getID(),
+                idiomaSelect.getIdioma(),};
+            JtableMode.addRow(newRow);
+        }
+        jTable_Idiomas.setModel(JtableMode);
+        jTable_Idiomas.repaint();
+        //Cargar base de datos juegos
+        listaJuegos = new ArrayList();
+        db = new dba("./Lab9P2_AlberthGodoy_DiegoChavez.mdb");
+        db.conectar();
+        try {
+            db.query.execute("select categoria,costo,nombre,id from Juegos");
+            ResultSet rs = db.query.getResultSet();
+            while (rs.next()) {
+                listaJuegos.add(new juegos(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getInt(4)));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        db.desconectar();
+        //Cargar JComboBox
+        DefaultComboBoxModel comboModel = (DefaultComboBoxModel) jComboBox_IdiomaJuego.getModel();
+        comboModel.removeAllElements();
+        for (int i = 0; i < listaJuegos.size(); i++) {
+            comboModel.addElement(listaJuegos.get(i));
+        }
+        jComboBox_IdiomaJuego.setModel(comboModel);
+        JOptionPane.showMessageDialog(jButton_Registrar, "Idioma Creado",
                 "LOGIN", JOptionPane.INFORMATION_MESSAGE);
+
     }//GEN-LAST:event_jButton_CrearNombreIdiomasMouseClicked
 
     private void jButton_EjecutarJuegoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_EjecutarJuegoMouseClicked
@@ -510,10 +612,10 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
             db = new dba("./Lab9P2_AlberthGodoy_DiegoChavez.mdb");
             db.conectar();
             try {
-                db.query.execute("select categoria,costo,nombre from Juegos");
+                db.query.execute("select categoria,costo,nombre,id from Juegos");
                 ResultSet rs = db.query.getResultSet();
                 while (rs.next()) {
-                    listaJuegos.add(new juegos(rs.getString(1), rs.getInt(2), rs.getString(3)));
+                    listaJuegos.add(new juegos(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getInt(4)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -527,10 +629,10 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
             dba db = new dba("./Lab9P2_AlberthGodoy_DiegoChavez.mdb");
             db.conectar();
             try {
-                db.query.execute("select categoria,costo,nombre from Juegos");
+                db.query.execute("select categoria,costo,nombre,id from Juegos");
                 ResultSet rs = db.query.getResultSet();
                 while (rs.next()) {
-                    listaJuegos.add(new juegos(rs.getString(1), rs.getInt(2), rs.getString(3)));
+                    listaJuegos.add(new juegos(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getInt(4)));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -538,12 +640,10 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
             db.desconectar();
             try {
                 boolean entra = false;
-                juegos juegoSupuesto = new juegos(jTextField_Categoria.getText(), Integer.parseInt(
-                        jTextField_Costo.getText()), jTextField_NombreJuego.getText());
                 for (juegos listaJuego : listaJuegos) {
-                    if (listaJuego.getNombre().equals(juegoSupuesto.getNombre())
-                            && listaJuego.getCosto() == juegoSupuesto.getCosto()
-                            && listaJuego.getCategoria().equals(juegoSupuesto.getCategoria())) {
+                    if (listaJuego.getNombre().equals(jTextField_NombreJuego.getText())
+                            && listaJuego.getCosto() == Integer.parseInt(jTextField_Costo.getText())
+                            && listaJuego.getCategoria().equals(jTextField_Categoria.getText())) {
                         entra = true;
                     }
                 }
@@ -555,13 +655,13 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
                     try {
 
                         db.query.execute(String.format("update Juegos set categoria= '%s' where nombre='%s'", jTextField_Categoria2.getText(),
-                                juegoSupuesto.getNombre()));
+                                jTextField_NombreJuego.getText()));
                         db.commit();
                         db.query.execute(String.format("update Juegos set costo= %d where nombre='%s'", Integer.parseInt(jTextField_Costo2.getText()),
-                                juegoSupuesto.getNombre()));
+                                jTextField_NombreJuego.getText()));
                         db.commit();
                         db.query.execute(String.format("update Juegos set nombre= '%s' where nombre= '%s'", jTextField_NombreJuego2.getText(),
-                                juegoSupuesto.getNombre()));
+                                jTextField_NombreJuego.getText()));
                         db.commit();
                     } catch (SQLException ex) {
                         ex.printStackTrace();

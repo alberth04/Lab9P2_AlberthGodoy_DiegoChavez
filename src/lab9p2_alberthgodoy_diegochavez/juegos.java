@@ -11,16 +11,17 @@ import java.util.ArrayList;
 public class juegos {
    // saber la categoría,
 //el costo del juego, su respectivo nombre y los idiomas en los que está el juego.
-    
+    private int id;
     private String categoria;
     private double costo;
     private String nombre;
     private ArrayList<idiomas> listaidiomas = new ArrayList();
 
-    public juegos(String categoria, double costo, String nombre) {
+    public juegos(String categoria, double costo, String nombre,int id) {
         this.categoria = categoria;
         this.costo = costo;
         this.nombre = nombre;
+        this.id = id;
     }
     
     
@@ -57,6 +58,14 @@ public class juegos {
         this.listaidiomas = listaidiomas;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 
         
     @Override
