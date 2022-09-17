@@ -5,6 +5,9 @@
  */
 package lab9p2_alberthgodoy_diegochavez;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JDialog;
@@ -27,6 +30,8 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
     private ArrayList<usuario> listaUsuarios = new ArrayList();
     private ArrayList<juegos> listaJuegos = new ArrayList();
     private ArrayList<idiomas> listaIdiomas = new ArrayList();
+    private LibLab9 libLab9 = new LibLab9();
+    private String query;
 
     /**
      * Creates new form Lab9P2_AlberthGodoy_DiegoChavez
@@ -239,6 +244,11 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
         jPanel_Idioma.add(jTextField_NombreIdiomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 200, -1));
 
         jButton_AgregarIdioma.setText("Agregar");
+        jButton_AgregarIdioma.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_AgregarIdiomaMouseClicked(evt);
+            }
+        });
         jPanel_Idioma.add(jButton_AgregarIdioma, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 200, -1));
 
         jPanel_Idioma.add(jComboBox_IdiomaJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 190, 30));
@@ -279,6 +289,11 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
         jPanel_Correo.add(jTextField_AsuntoCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 160, -1));
 
         jButton_EnviarCorreo.setText("Enviar");
+        jButton_EnviarCorreo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_EnviarCorreoMouseClicked(evt);
+            }
+        });
         jPanel_Correo.add(jButton_EnviarCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 90, -1));
 
         jLabel18.setText("Asunto");
@@ -292,7 +307,7 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
 
         jTabbedPane_Inicio.addTab("Correo", jPanel_Correo);
 
-        jDialog_Inicio.getContentPane().add(jTabbedPane_Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 560));
+        jDialog_Inicio.getContentPane().add(jTabbedPane_Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 780, 560));
 
         jMenu_Archivo.setText("Archivo");
 
@@ -680,11 +695,88 @@ public class Lab9P2_AlberthGodoy_DiegoChavez extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton_EjecutarJuegoMouseClicked
 
+    private void jButton_AgregarIdiomaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_AgregarIdiomaMouseClicked
+        //Agregar Idioma a juego
+        juegos juegoSelect = (juegos) jComboBox_IdiomaJuego.getSelectedItem();
+        //Obtener el modelo del jtable
+        //Obtenemos el modelo de la jTable
+        DefaultTableModel jTableModel
+                = (DefaultTableModel) jTable_Idiomas.getModel();
+        if (jTable_Idiomas.getSelectedRowCount() == 1) {
+            int rowSelected = jTable_Idiomas.getSelectedRow();
+            String nombreIdioma = (String) jTableModel.getValueAt(rowSelected, 1);
+            //Cargar Juegos
+            dba db = new dba("./Lab9P2_AlberthGodoy_DiegoChavez.mdb");
+            listaJuegos = new ArrayList();
+            db.conectar();
+            try {
+                db.query.execute("select categoria,costo,nombre,id from Juegos");
+                ResultSet rs = db.query.getResultSet();
+                while (rs.next()) {
+                    listaJuegos.add(new juegos(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getInt(4)));
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            db.desconectar();
+
+            //Agregar a la lista
+            juegoSelect.getListaidiomas().add(new idiomas(0, nombreIdioma));
+            //Agregar en access
+            String idioma = "";
+            for (int i = 0; i < juegoSelect.getListaidiomas().size(); i++) {
+                idioma += juegoSelect.getListaidiomas().get(i).getIdioma() + ",";
+            }
+            //Actualizar idioma
+            db = new dba("./Lab9P2_AlberthGodoy_DiegoChavez.mdb");
+            db.conectar();
+            try {
+                db.query.execute("update Juegos set listaIdioma='"+idioma+"' where ID="+juegoSelect.getId()+"");
+                db.commit();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            db.desconectar();
+        } else {
+            JOptionPane.showMessageDialog(jPanel_Idioma, "No ha seleccionado nada",
+                    "IMPORTANTE", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton_AgregarIdiomaMouseClicked
+
+    private void jButton_EnviarCorreoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_EnviarCorreoMouseClicked
+        try {
+            libLab9.sendMail(jTextArea_MensajeCorreo.getText(), jTextField_AsuntoCorreo.getText(), jTextField_ParaCorreo.getText());
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jButton_EnviarCorreoMouseClicked
+
     private void entrar(JDialog cosa) {
         cosa.setModal(true);
         cosa.pack();
         //cosa.setLocationRelativeTo(this);
         cosa.setVisible(true);
+    }
+
+    public void escribir() {
+        File xc = new File("./queryx/" + query + ".mb");
+        FileOutputStream fw = null;
+        ObjectOutputStream bw = null;
+        try {
+            fw = new FileOutputStream(xc);
+            bw = new ObjectOutputStream(fw);
+
+            bw.writeObject(xc);
+
+            bw.flush();
+        } catch (Exception ex) {
+        } finally {
+            try {
+                bw.close();
+                fw.close();
+            } catch (Exception ex) {
+            }
+        }
+
     }
 
     private void cerrar(JDialog cosa) {
